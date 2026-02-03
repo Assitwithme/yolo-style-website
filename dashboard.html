@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dashboard | AURA ON PLAY</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="js/app.js" defer></script>
+</head>
+<body>
+
+  <div class="header">
+    <h1 class="brand">AURA ON PLAY</h1>
+    <p class="tagline">Enjoy • Win • Money</p>
+  </div>
+
+  <div class="container pad-bottom">
+    <div class="card">
+
+      <div class="topbar">
+        <div>Wallet Balance</div>
+        <strong>₹ <span id="balDash">0.00</span></strong>
+      </div>
+
+      <h2 class="title">Welcome 🎉</h2>
+      <p class="sub">Select a game to start playing</p>
+
+      <div class="grid">
+        <div class="tile" onclick="location.href='pages/games.html'">
+          <span class="emoji">🎰</span>Slots
+        </div>
+        <div class="tile" onclick="location.href='pages/games.html'">
+          <span class="emoji">🎲</span>Dice
+        </div>
+        <div class="tile" onclick="location.href='pages/games.html'">
+          <span class="emoji">🃏</span>Cards
+        </div>
+        <div class="tile" onclick="location.href='pages/games.html'">
+          <span class="emoji">⚽</span>Sports
+        </div>
+      </div>
+
+      <div style="height:12px"></div>
+      <button class="btn btn-red" onclick="logoutTo('login.html')">LOGOUT</button>
+
+      <p class="notice">Demo project — No real payments</p>
+    </div>
+  </div>
+
+  <div class="nav">
+    <div class="item active" onclick="location.href='dashboard.html'"><span>🏠</span>Home</div>
+    <div class="item" onclick="location.href='pages/wallet.html'"><span>💰</span>Wallet</div>
+    <div class="item" onclick="location.href='pages/profile.html'"><span>👤</span>Profile</div>
+    <div class="item" onclick="logoutTo('login.html')"><span>🚪</span>Logout</div>
+  </div>
+
+<script>
+  // protect + back-button safe
+  requireAuth("login.html");
+
+  // show balance
+  function render(){
+    setText("balDash", money(getBalance()));
+  }
+  render();
+  window.addEventListener("pageshow", render);
+</script>
+
+</body>
+</html>

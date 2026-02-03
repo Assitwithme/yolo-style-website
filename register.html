@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Register | AURA ON PLAY</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="js/app.js" defer></script>
+</head>
+<body>
+
+  <div class="header">
+    <h1 class="brand">AURA ON PLAY</h1>
+    <p class="tagline">Enjoy • Win • Money</p>
+  </div>
+
+  <div class="container pad-bottom">
+    <div class="card">
+      <h2 class="title">Create Account</h2>
+      <p class="sub">Demo registration (stores data in browser)</p>
+
+      <input id="rName" class="input" placeholder="Full Name" />
+      <input id="rPhone" class="input" placeholder="Mobile Number" />
+      <input id="rEmail" class="input" placeholder="Email ID" />
+      <input id="rPass" class="input" type="password" placeholder="Password" />
+
+      <button class="btn btn-green" onclick="doRegister()">REGISTER</button>
+
+      <div style="height:10px"></div>
+      <div class="links">
+        <a href="index.html">← Back Home</a>
+        <a href="login.html">Already user? Login</a>
+      </div>
+
+      <p id="rMsg" class="notice"></p>
+    </div>
+  </div>
+
+<script>
+function doRegister(){
+  const name = document.getElementById("rName").value.trim();
+  const phone = document.getElementById("rPhone").value.trim();
+  const email = document.getElementById("rEmail").value.trim();
+  const pass = document.getElementById("rPass").value.trim();
+
+  if(!name || !phone || !email || !pass){
+    document.getElementById("rMsg").textContent = "Please fill all fields ❌";
+    return;
+  }
+
+  saveProfile({name, email, phone});
+  localStorage.setItem("demoPassword", pass); // demo only
+  document.getElementById("rMsg").textContent = "Account created ✅ Redirecting to login...";
+
+  setTimeout(()=> location.href="login.html", 700);
+}
+</script>
+
+</body>
+</html>

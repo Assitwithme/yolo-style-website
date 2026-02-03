@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Login | AURA ON PLAY</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="js/app.js" defer></script>
+</head>
+<body>
+
+  <div class="header">
+    <h1 class="brand">AURA ON PLAY</h1>
+    <p class="tagline">Enjoy • Win • Money</p>
+  </div>
+
+  <div class="container pad-bottom">
+    <div class="card">
+      <h2 class="title">Login</h2>
+      <p class="sub">Demo login (localStorage)</p>
+
+      <input id="lUser" class="input" placeholder="Mobile or Email" />
+      <input id="lPass" class="input" type="password" placeholder="Password" />
+
+      <button class="btn btn-green" onclick="doLogin()">LOGIN</button>
+
+      <div style="height:10px"></div>
+      <div class="links">
+        <a href="index.html">← Back Home</a>
+        <a href="register.html">Create Account</a>
+      </div>
+
+      <p id="lMsg" class="notice"></p>
+    </div>
+  </div>
+
+<script>
+function doLogin(){
+  const pass = document.getElementById("lPass").value.trim();
+  const saved = localStorage.getItem("demoPassword") || "1234"; // default
+
+  if(pass !== saved){
+    document.getElementById("lMsg").textContent = "Wrong password ❌ (Try: 1234 if not registered)";
+    return;
+  }
+
+  loginSuccess();
+  location.href = "dashboard.html";
+}
+</script>
+
+</body>
+</html>
